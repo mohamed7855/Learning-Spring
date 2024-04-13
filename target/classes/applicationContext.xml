@@ -17,5 +17,11 @@
 		<!-- set up constructor injection -->
 		<constructor-arg ref="myFortune"/>
 	</bean>
+	
+	<bean id="myBaseballCoach" class="com.learning.spring.BaseballCoach">
+	
+		<!-- set up setter injection -->
+		<property name="fortuneService" ref="myFortune"></property>
+	</bean>
 
 </beans>

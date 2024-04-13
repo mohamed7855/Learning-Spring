@@ -5,9 +5,13 @@ public class BaseballCoach implements Coach {
 	// define a private field for the dependency
 	private FortuneService fortuneService;
 
-	// define constructor for dependency injection
-	public BaseballCoach(FortuneService theFortuneService) {
-		fortuneService = theFortuneService;
+	// create a no-arg constructor
+	public BaseballCoach() {
+		super();
+	}
+
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
 	}
 
 	@Override

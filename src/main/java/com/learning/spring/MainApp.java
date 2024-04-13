@@ -9,11 +9,15 @@ public class MainApp {
 
 		// retrieve bean from spring container
 		Coach theCoach = context.getBean("myGolfCoach", Coach.class);
-
+		Coach theCoach2 = context.getBean("myBaseballCoach", Coach.class);
+		
 		// call methods on the bean
 		System.out.println(theCoach.getDailyWorkout());
 		
 		System.out.println(theCoach.getDailyFortune());
+		
+		System.out.println(theCoach2.getDailyWorkout());
+		System.out.println(theCoach2.getDailyFortune());
 
 		// close the context
 		context.close();
