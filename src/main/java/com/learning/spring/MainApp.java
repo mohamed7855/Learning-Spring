@@ -10,6 +10,7 @@ public class MainApp {
 		// retrieve bean from spring container
 		Coach theCoach = context.getBean("myGolfCoach", Coach.class);
 		Coach theCoach2 = context.getBean("myBaseballCoach", Coach.class);
+		BaseballCoach theCoach3 = context.getBean("myBaseballCoach", BaseballCoach.class);
 		
 		// call methods on the bean
 		System.out.println(theCoach.getDailyWorkout());
@@ -18,6 +19,9 @@ public class MainApp {
 		
 		System.out.println(theCoach2.getDailyWorkout());
 		System.out.println(theCoach2.getDailyFortune());
+		
+		System.out.println(theCoach3.getTeam());
+		System.out.println(theCoach3.getEmail());
 
 		// close the context
 		context.close();
