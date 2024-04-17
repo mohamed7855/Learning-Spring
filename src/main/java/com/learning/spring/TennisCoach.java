@@ -9,7 +9,7 @@ public class TennisCoach implements Coach {
 	private FortuneService fortuneService;
 
 	@Autowired
-	public void setFortuneService(FortuneService fortuneService) {
+	public void doInjection(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}
 	
