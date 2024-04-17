@@ -3,9 +3,11 @@ package com.learning.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("tennisCoach")
+@Scope("prototype")
 public class TennisCoach implements Coach {
 	
 	@Value("${foo.email}")

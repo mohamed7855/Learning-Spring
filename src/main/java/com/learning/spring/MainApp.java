@@ -8,12 +8,11 @@ public class MainApp {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		// retrieve bean from spring container
-		TennisCoach theCoach = context.getBean("tennisCoach", TennisCoach.class);
+		Coach theCoach = context.getBean("tennisCoach", Coach.class);
+		Coach alphaCoach = context.getBean("tennisCoach", Coach.class);
 		
 		// call methods on the bean
-		System.out.println(theCoach.getDailyWorkout());
-		System.out.println(theCoach.getDailyFortune());
-		System.out.println(theCoach.getEmail());
+		System.out.println(theCoach==alphaCoach);
 
 		// close the context
 		context.close();
