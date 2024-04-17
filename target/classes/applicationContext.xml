@@ -9,5 +9,6 @@
 
 	<!-- enable component scanning -->
 	<context:component-scan base-package="com.learning.spring"></context:component-scan>
+	<context:property-placeholder location="classpath:sport.properties"/>
 
 </beans>

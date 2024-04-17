@@ -2,10 +2,14 @@ package com.learning.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("tennisCoach")
 public class TennisCoach implements Coach {
+	
+	@Value("${foo.email}")
+	private String email;
 	
 	@Autowired
 	@Qualifier("randomFortuneService")
@@ -33,5 +37,11 @@ public class TennisCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
+
+	public String getEmail() {
+		return email;
+	}
+	
+	
 
 }
