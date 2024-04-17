@@ -15,7 +15,7 @@
 	<!-- define the Dependency -->
 	<bean id="myFortune" class="com.learning.spring.HappyFortuneService"></bean>
 	
-	<bean id="myGolfCoach" class="com.learning.spring.GolfCoach">
+	<bean id="myGolfCoach" class="com.learning.spring.GolfCoach" scope="prototype">
 	
 		<!-- set up constructor injection -->
 		<constructor-arg ref="myFortune"/>

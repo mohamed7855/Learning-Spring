@@ -9,6 +9,12 @@ public class MainApp {
 
 		// retrieve bean from spring container
 		Coach theCoach = context.getBean("myGolfCoach", Coach.class);
+		Coach alphaCoach = context.getBean("myGolfCoach", Coach.class);
+		
+		System.out.println(theCoach==alphaCoach);//false
+		System.out.println("Memory location for theCoach: "+theCoach);	  //com.learning.spring.GolfCoach@101952da
+		System.out.println("Memory location for alphaCoach: "+alphaCoach);//com.learning.spring.GolfCoach@6babf3bf
+		
 		Coach theCoach2 = context.getBean("myBaseballCoach", Coach.class);
 		BaseballCoach theCoach3 = context.getBean("myBaseballCoach", BaseballCoach.class);
 		
