@@ -7,29 +7,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- load the properties file: sport.properties -->
-	<context:property-placeholder location="classpath:sport.properties"/>
-	
-	<!-- Define your beans here -->
-	
-	<!-- define the Dependency -->
-	<bean id="myFortune" class="com.learning.spring.HappyFortuneService"></bean>
-	
-	<bean id="myGolfCoach" class="com.learning.spring.GolfCoach" init-method="doMyStartupStuff" destroy-method="doMyCloseupStuff">
-	
-		<!-- set up constructor injection -->
-		<constructor-arg ref="myFortune"/>
-	</bean>
-	
-	<bean id="myBaseballCoach" class="com.learning.spring.BaseballCoach">
-	
-		<!-- set up setter injection -->
-		<property name="fortuneService" ref="myFortune"></property>
-		
-		<!-- inject literal values -->
-		<property name="team" value="${foo.team}"></property>
-		<property name="email" value="${foo.email}"></property>
-
-	</bean>
+	<!-- enable component scanning -->
+	<context:component-scan base-package="com.learning.spring"></context:component-scan>
 
 </beans>
