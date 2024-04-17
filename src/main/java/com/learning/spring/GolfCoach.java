@@ -20,5 +20,14 @@ public class GolfCoach implements Coach{
 		return fortuneService.getFortune();
 	}
 
+	// init method
+	public void doMyStartupStuff() {
+		System.out.println("GolfCoach: init method");
+	}
+	
+	// destroy method
+	public void doMyCloseupStuff() {
+		System.out.println("GolfCoach: destroy method");
+	}
 
 }
