@@ -11,4 +11,13 @@ public class HomeController {
 		return "Home";
 	}
 	
+	@RequestMapping("/showForm")
+	public String showForm() {
+		return "hello-form";
+	}
+	
+	@RequestMapping("/processForm")
+	public String processForm() {
+		return "helloworld";
+	}
 }
