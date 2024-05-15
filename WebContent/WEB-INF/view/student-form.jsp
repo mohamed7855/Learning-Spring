@@ -37,8 +37,23 @@
 		<form:radiobutton id="Male" value="Male" path="gender" />
 		<label for="Female">Female</label>
 		<form:radiobutton id="Female" value="Female" path="gender" />
-		-->		
+		-->	
+		
+			
 		<br><br>
+		<!-- only need getter getOSs -->
+		<form:checkboxes path="operatingSystems" items="${student.OSs}" />
+		
+		
+		<!-- Another Solution Without operatingSystems
+		<label for="Linux">Linux</label>
+		<form:checkbox id="Linux" path="operatingSystems" value="Linux" />
+		<label for="Windows">"Windows"</label>
+		<form:checkbox id="Windows" path="operatingSystems" value="Windows" />
+		<label for="Mac">Mac</label>
+		<form:checkbox id="Mac" path="operatingSystems" value="Mac" />
+		<br><br>
+		-->	
 		<button type="submit">Submit</button>
 	</form:form>
 

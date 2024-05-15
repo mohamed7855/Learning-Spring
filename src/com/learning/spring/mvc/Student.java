@@ -9,6 +9,8 @@ public class Student {
 	private LinkedHashMap<String, String> countryOptions;
 	private String gender;
 	private LinkedHashMap<String, String> genderOptions;
+	private String[] operatingSystems;
+	private LinkedHashMap<String, String> OSs;
 	
 	public Student() {
 		countryOptions = new LinkedHashMap();
@@ -20,6 +22,11 @@ public class Student {
 		genderOptions = new LinkedHashMap();
 		genderOptions.put("Male", "Male");
 		genderOptions.put("Female", "Female");
+		
+		OSs = new LinkedHashMap();
+		OSs.put("Linux", "Linux");
+		OSs.put("Windows", "Windows");
+		OSs.put("Mac", "Mac");
 	}
 
 	public String getFirstName() {
@@ -61,9 +68,19 @@ public class Student {
 	public LinkedHashMap<String, String> getGenderOptions() {
 		return genderOptions;
 	}
+
+	public String[] getOperatingSystems() {
+		return operatingSystems;
+	}
+
+	public void setOperatingSystems(String[] operatingSystems) {
+		this.operatingSystems = operatingSystems;
+	}
+
+	public LinkedHashMap<String, String> getOSs() {
+		return OSs;
+	}
 	
-	
-	
-	
+
 
 }
