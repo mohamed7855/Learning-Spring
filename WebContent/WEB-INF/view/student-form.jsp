@@ -26,6 +26,18 @@
 			<form:option value="Bahrin" label="Bahrin" />
 			-->
 		</form:select>
+		
+		<br><br>
+		<!-- only need getter getGenderOptions -->
+		<form:radiobuttons path="gender" items="${student.genderOptions}" />
+		
+		
+		<!-- Another Solution Without genderOptions
+		<label for="Male">Male</label>
+		<form:radiobutton id="Male" value="Male" path="gender" />
+		<label for="Female">Female</label>
+		<form:radiobutton id="Female" value="Female" path="gender" />
+		-->		
 		<br><br>
 		<button type="submit">Submit</button>
 	</form:form>

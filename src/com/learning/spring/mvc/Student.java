@@ -7,6 +7,8 @@ public class Student {
 	private String lastName;
 	private String country;
 	private LinkedHashMap<String, String> countryOptions;
+	private String gender;
+	private LinkedHashMap<String, String> genderOptions;
 	
 	public Student() {
 		countryOptions = new LinkedHashMap();
@@ -14,6 +16,10 @@ public class Student {
 		countryOptions.put("USA", "USA");
 		countryOptions.put("Algeria", "Algeria");
 		countryOptions.put("Bahrin", "Bahrin");
+		
+		genderOptions = new LinkedHashMap();
+		genderOptions.put("Male", "Male");
+		genderOptions.put("Female", "Female");
 	}
 
 	public String getFirstName() {
@@ -43,6 +49,19 @@ public class Student {
 	public LinkedHashMap<String, String> getCountryOptions() {
 		return countryOptions;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public LinkedHashMap<String, String> getGenderOptions() {
+		return genderOptions;
+	}
+	
 	
 	
 	
