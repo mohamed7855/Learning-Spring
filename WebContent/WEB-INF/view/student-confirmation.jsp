@@ -5,5 +5,7 @@
 </head>
 <body>
 	<h1>Hello ${student.firstName} ${student.lastName}</h1>
+	<br><br>
+	<h2>Country ${student.country}</h2>
 </body>
 </html>
