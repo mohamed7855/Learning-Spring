@@ -1,32 +1,21 @@
 package com.learning.spring.mvc;
 
-import java.util.LinkedHashMap;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Student {
+	
+	@NotNull(message="is required")
+	@Size(min = 3, message="is required")
 	private String firstName;
+	
+	@NotNull(message="is required")
+	@Size(min = 2, message="is required")
 	private String lastName;
-	private String country;
-	private LinkedHashMap<String, String> countryOptions;
-	private String gender;
-	private LinkedHashMap<String, String> genderOptions;
-	private String[] operatingSystems;
-	private LinkedHashMap<String, String> OSs;
+	
 	
 	public Student() {
-		countryOptions = new LinkedHashMap();
-		countryOptions.put("Egypt", "Egypt");
-		countryOptions.put("USA", "USA");
-		countryOptions.put("Algeria", "Algeria");
-		countryOptions.put("Bahrin", "Bahrin");
 		
-		genderOptions = new LinkedHashMap();
-		genderOptions.put("Male", "Male");
-		genderOptions.put("Female", "Female");
-		
-		OSs = new LinkedHashMap();
-		OSs.put("Linux", "Linux");
-		OSs.put("Windows", "Windows");
-		OSs.put("Mac", "Mac");
 	}
 
 	public String getFirstName() {
@@ -44,43 +33,5 @@ public class Student {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public LinkedHashMap<String, String> getCountryOptions() {
-		return countryOptions;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public LinkedHashMap<String, String> getGenderOptions() {
-		return genderOptions;
-	}
-
-	public String[] getOperatingSystems() {
-		return operatingSystems;
-	}
-
-	public void setOperatingSystems(String[] operatingSystems) {
-		this.operatingSystems = operatingSystems;
-	}
-
-	public LinkedHashMap<String, String> getOSs() {
-		return OSs;
-	}
-	
-
 
 }
