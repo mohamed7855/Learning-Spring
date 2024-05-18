@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.learning.spring.mvc.validation.SubjectCode;
+
 public class Student {
 	
 	@NotNull(message="is required")
@@ -23,6 +25,10 @@ public class Student {
 	
 	@Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "only 5 chars/digits")
 	private String postalCode;
+	
+//	@SubjectCode(value = "ABC-", message = "must start with ABC-")
+	@SubjectCode
+	private String subjectCode;
 	
 	public Student() {
 		
@@ -59,6 +65,15 @@ public class Student {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
+
+	public String getSubjectCode() {
+		return subjectCode;
+	}
+
+	public void setSubjectCode(String subjectCode) {
+		this.subjectCode = subjectCode;
+	}
+	
 	
 	
 
