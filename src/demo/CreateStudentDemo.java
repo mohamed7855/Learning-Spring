@@ -25,12 +25,12 @@ public class CreateStudentDemo {
 			session.beginTransaction();
 			
 			// get Student Object
-			Student theStudent = session.get(Student.class, 1);
+			Student theStudent = session.get(Student.class, 2);
 			
-			// update Student
-			theStudent.setFirstName("Yousef");
+			// delete Student
+			session.delete(theStudent);
 			
-			session.createQuery("update Student set email='Yousef@gmail.com' where id=1").executeUpdate();
+			session.createQuery("delete from Student where id=3").executeUpdate();
 			
 			// commit transaction
 			session.getTransaction().commit();
