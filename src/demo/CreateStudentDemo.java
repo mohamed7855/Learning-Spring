@@ -19,23 +19,20 @@ public class CreateStudentDemo {
 		Session session = sessionFactory.getCurrentSession();
 		
 		try {
-			// create student object
-			Student student = new Student("Salem", "Omara", "Salem@gmail.com");
-			
 			// start a transaction
 			session.beginTransaction();
 			
-			// save student object
-			System.out.println("Saving the Student...");
-			session.save(student);
+			// now retrieve/read from database using the primary key
+			Student student = session.get(Student.class, 2);
 			
-			// commit transaction
-			session.getTransaction().commit();
-			
-			System.out.println("Done!");
+			System.out.println(student.toString());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+		finally {
+			session.close();
+			sessionFactory.close();
 		}
 	}
 
