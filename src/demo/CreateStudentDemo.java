@@ -24,33 +24,13 @@ public class CreateStudentDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			// query students
-			List<Student> theStudents = session.createQuery("from Student").getResultList();
+			// get Student Object
+			Student theStudent = session.get(Student.class, 1);
 			
-			// display the students
-			System.out.println("\n\nAll Students...");
-			displayStudents(theStudents);
+			// update Student
+			theStudent.setFirstName("Yousef");
 			
-			// query students: lastName='Omara'
-			theStudents = session.createQuery("from Student s where s.lastName = 'Omara'").getResultList();
-			
-			// display the students: lastName='Omara'
-			System.out.println("\n\nAll Students lastName=Omara...");
-			displayStudents(theStudents);
-			
-			// query students
-			theStudents = session.createQuery("from Student s where s.firstName='Mohamed'" + " OR s.email='Khaled@gmail.com'").getResultList();
-			
-			// display the students
-			System.out.println("\n\nAll Students firstName=Mohamed OR email=Khaled@gmail.com...");
-			displayStudents(theStudents);
-			
-			// query students
-			theStudents = session.createQuery("from Student s where s.email LIKE 'Khaled%'").getResultList();
-			
-			// display the students
-			System.out.println("\n\nAll Students email start with Khaled...");
-			displayStudents(theStudents);
+			session.createQuery("update Student set email='Yousef@gmail.com' where id=1").executeUpdate();
 			
 			// commit transaction
 			session.getTransaction().commit();
@@ -64,10 +44,5 @@ public class CreateStudentDemo {
 		}
 	}
 
-	private static void displayStudents(List<Student> theStudents) {
-		for (Student tempStudent : theStudents) {
-			System.out.println(tempStudent.toString());
-		}
-	}
-
+	
 }
