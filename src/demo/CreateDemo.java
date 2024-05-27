@@ -26,17 +26,13 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Instructor tempInstructor = session.get(Instructor.class, 1);
+			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 1);
 			
-			System.out.println("Found instructor: "+tempInstructor);
+			// get Instructor from InstructorDetail
+			System.out.println("Instructor: "+tempInstructorDetail.getInstructor());
 			
-			if (tempInstructor != null) {
-				System.out.println("Deleting Instructor...");
-				session.delete(tempInstructor);
-			}
 			// commit transaction
 			session.getTransaction().commit();
-			System.out.println("Done!");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
