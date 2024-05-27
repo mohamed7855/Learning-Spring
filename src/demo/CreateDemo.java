@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import demo.entity.Course;
 import demo.entity.Instructor;
 import demo.entity.InstructorDetail;
 
@@ -17,6 +18,7 @@ public class CreateDemo {
 				.configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Instructor.class)
 				.addAnnotatedClass(InstructorDetail.class)
+				.addAnnotatedClass(Course.class)
 				.buildSessionFactory();
 		
 		// create session
@@ -26,15 +28,21 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 1);
+			Instructor tempInstructor = new Instructor("Salem", "Omara", "Omara@gmail.com");
+			InstructorDetail tempInstructorDetail = new InstructorDetail("Youtube.com", "Tennis");
+			Course tempCourse1 = new Course("Java");
+			Course tempCourse2 = new Course("Spring");
 			
-			// get Instructor from InstructorDetail
-			System.out.println("Instructor: "+tempInstructorDetail.getInstructor());
+			tempInstructor.setInstructorDetail(tempInstructorDetail);
+			tempCourse1.setInstructor(tempInstructor);
+			tempCourse2.setInstructor(tempInstructor);
 			
-			// remove bi-directional link
-			tempInstructorDetail.getInstructor().setInstructorDetail(null);
-			
-			session.delete(tempInstructorDetail);
+			tempInstructor.add(tempCourse1);
+			tempInstructor.add(tempCourse2);
+						
+			session.save(tempInstructor);
+			session.save(tempCourse1);
+			session.save(tempCourse2);
 			
 			// commit transaction
 			session.getTransaction().commit();
