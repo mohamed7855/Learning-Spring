@@ -30,10 +30,14 @@ public class CreateDemo {
 			
 			// get a course 
 			Instructor tempInstructor = session.get(Instructor.class, 5);
-			System.out.println(tempInstructor.getCourses());
 			
 			// commit transaction
 			session.getTransaction().commit();
+			
+			// close the session 
+			session.close();
+			
+			System.out.println(tempInstructor.getCourses());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
