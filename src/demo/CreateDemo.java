@@ -31,6 +31,11 @@ public class CreateDemo {
 			// get Instructor from InstructorDetail
 			System.out.println("Instructor: "+tempInstructorDetail.getInstructor());
 			
+			// remove bi-directional link
+			tempInstructorDetail.getInstructor().setInstructorDetail(null);
+			
+			session.delete(tempInstructorDetail);
+			
 			// commit transaction
 			session.getTransaction().commit();
 			
