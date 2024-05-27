@@ -28,8 +28,10 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Instructor tempInstructor = session.get(Instructor.class, 5);
-			System.out.println(tempInstructor.getCourses());
+			// get a course 
+			Course tempCourse = session.get(Course.class, 12);
+			// delete a course
+			session.delete(tempCourse);
 			
 			// commit transaction
 			session.getTransaction().commit();
