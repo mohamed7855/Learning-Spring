@@ -1,19 +1,22 @@
 package demo.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "student")
-public class Student {
-
+@Table(name = "instructor")
+public class Instructor {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name="first_name")
@@ -25,9 +28,11 @@ public class Student {
 	@Column(name="email")
 	private String email;
 	
-	public Student() {	}
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "instructor_detail_id")
+	private InstructorDetail instructorDetail;
 
-	public Student(String firstName, String lastName, String email) {
+	public Instructor(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -66,11 +71,19 @@ public class Student {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+	public InstructorDetail getInstructorDetail() {
+		return instructorDetail;
 	}
 
-	
+	public void setInstructorDetail(InstructorDetail instructorDetail) {
+		this.instructorDetail = instructorDetail;
+	}
+
+	@Override
+	public String toString() {
+		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", instructorDetail=" + instructorDetail + "]";
+	}
+
 	
 }
