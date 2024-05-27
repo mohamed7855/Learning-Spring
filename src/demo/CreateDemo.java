@@ -23,19 +23,20 @@ public class CreateDemo {
 		Session session = sessionFactory.getCurrentSession();
 		
 		try {
-			Instructor tempInstructor = new Instructor("Mohamed", "Omara", "mohamed@gmail.com");
-			InstructorDetail tempInstructorDetail = new InstructorDetail("Omara@youtube.com", "Football");
-			
-			tempInstructor.setInstructorDetail(tempInstructorDetail);
-			
 			// start a transaction
 			session.beginTransaction();
 			
-			session.save(tempInstructor);
-			System.out.println("Saving Instructor "+tempInstructor);
+			Instructor tempInstructor = session.get(Instructor.class, 1);
 			
+			System.out.println("Found instructor: "+tempInstructor);
+			
+			if (tempInstructor != null) {
+				System.out.println("Deleting Instructor...");
+				session.delete(tempInstructor);
+			}
 			// commit transaction
 			session.getTransaction().commit();
+			System.out.println("Done!");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
