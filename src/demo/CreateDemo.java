@@ -28,21 +28,8 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Instructor tempInstructor = new Instructor("Salem", "Omara", "Omara@gmail.com");
-			InstructorDetail tempInstructorDetail = new InstructorDetail("Youtube.com", "Tennis");
-			Course tempCourse1 = new Course("Java");
-			Course tempCourse2 = new Course("Spring");
-			
-			tempInstructor.setInstructorDetail(tempInstructorDetail);
-			tempCourse1.setInstructor(tempInstructor);
-			tempCourse2.setInstructor(tempInstructor);
-			
-			tempInstructor.add(tempCourse1);
-			tempInstructor.add(tempCourse2);
-						
-			session.save(tempInstructor);
-			session.save(tempCourse1);
-			session.save(tempCourse2);
+			Instructor tempInstructor = session.get(Instructor.class, 5);
+			System.out.println(tempInstructor.getCourses());
 			
 			// commit transaction
 			session.getTransaction().commit();
