@@ -34,19 +34,18 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Student tempStudent = session.get(Student.class, 2);
-			System.out.println("Loaded Student: "+tempStudent);
-			System.out.println("Courses: "+tempStudent.getCourses());
+			
 			
 			Course tempCourse = session.get(Course.class, 17);
 			
-			System.out.println("Adding Course: "+tempCourse);
-			tempStudent.add(tempCourse);
+			System.out.println("Deleting Course: "+tempCourse);
+			
+			session.delete(tempCourse);
 			
 			// commit transaction
 			session.getTransaction().commit();
 			
-			System.out.println("Done! Now All Courses: "+tempStudent.getCourses());
+			System.out.println("Done!");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
