@@ -32,16 +32,10 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Course tempCourse = new Course("CSS");
-			Review tempReview1 = new Review("Good");
-			Review tempReview2 = new Review("Very Good");
+			Course tempCourse = session.get(Course.class, 10);
 			
-			tempCourse.add(tempReview1);
-			tempCourse.add(tempReview2);
-			
-			System.out.println("Saving the Course "+tempCourse.toString());
-			System.out.println("Reviews: "+tempCourse.getReviews().toString());
-			session.save(tempCourse);
+			System.out.println("Course "+tempCourse.toString());
+			System.out.println("Course Reviews "+tempCourse.getReviews().toString());
 			
 			// commit transaction
 			session.getTransaction().commit();
