@@ -34,22 +34,24 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Course tempCourse = new Course("SQL");
+			Student tempStudent = session.get(Student.class, 1);
+			System.out.println("Loaded Student: "+tempStudent);
+			System.out.println("Courses: "+tempStudent.getCourses());
 			
-			System.out.println("Saving Course "+tempCourse);
-			session.save(tempCourse);
+			Course tempCourse1 = new Course("Angular");
+			Course tempCourse2 = new Course("React");
 			
-			Student tempStudent1 = new Student("Ali","Omara","Ali@gmail.com");
-			Student tempStudent2 = new Student("Salem","Omara","Salem@gmail.com");
+			System.out.println("Adding More Courses...");
+			tempStudent.add(tempCourse1);
+			tempStudent.add(tempCourse2);
 			
-			tempCourse.add(tempStudent1);
-			tempCourse.add(tempStudent2);
-			System.out.println("Saving Course Students "+tempCourse.getStudents());
-			session.save(tempStudent1);
-			session.save(tempStudent2);
+			session.save(tempCourse1);
+			session.save(tempCourse2);
 			
 			// commit transaction
 			session.getTransaction().commit();
+			
+			System.out.println("Done! Now All Courses: "+tempStudent.getCourses());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
