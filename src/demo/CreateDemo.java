@@ -11,6 +11,7 @@ import demo.entity.Course;
 import demo.entity.Instructor;
 import demo.entity.InstructorDetail;
 import demo.entity.Review;
+import demo.entity.Student;
 
 public class CreateDemo {
 
@@ -22,6 +23,7 @@ public class CreateDemo {
 				.addAnnotatedClass(InstructorDetail.class)
 				.addAnnotatedClass(Course.class)
 				.addAnnotatedClass(Review.class)
+				.addAnnotatedClass(Student.class)
 				.buildSessionFactory();
 		
 		// create session
@@ -32,12 +34,19 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Course tempCourse = session.get(Course.class, 10);
+			Course tempCourse = new Course("SQL");
 			
-			System.out.println("Deleting Course "+tempCourse);
-			System.out.println("Deleting Reviews "+tempCourse.getReviews());
+			System.out.println("Saving Course "+tempCourse);
+			session.save(tempCourse);
 			
-			session.delete(tempCourse);
+			Student tempStudent1 = new Student("Ali","Omara","Ali@gmail.com");
+			Student tempStudent2 = new Student("Salem","Omara","Salem@gmail.com");
+			
+			tempCourse.add(tempStudent1);
+			tempCourse.add(tempStudent2);
+			System.out.println("Saving Course Students "+tempCourse.getStudents());
+			session.save(tempStudent1);
+			session.save(tempStudent2);
 			
 			// commit transaction
 			session.getTransaction().commit();
