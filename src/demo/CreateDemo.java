@@ -34,19 +34,14 @@ public class CreateDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Student tempStudent = session.get(Student.class, 1);
+			Student tempStudent = session.get(Student.class, 2);
 			System.out.println("Loaded Student: "+tempStudent);
 			System.out.println("Courses: "+tempStudent.getCourses());
 			
-			Course tempCourse1 = new Course("Angular");
-			Course tempCourse2 = new Course("React");
+			Course tempCourse = session.get(Course.class, 17);
 			
-			System.out.println("Adding More Courses...");
-			tempStudent.add(tempCourse1);
-			tempStudent.add(tempCourse2);
-			
-			session.save(tempCourse1);
-			session.save(tempCourse2);
+			System.out.println("Adding Course: "+tempCourse);
+			tempStudent.add(tempCourse);
 			
 			// commit transaction
 			session.getTransaction().commit();
