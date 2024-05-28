@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import demo.entity.Course;
 import demo.entity.Instructor;
 import demo.entity.InstructorDetail;
+import demo.entity.Review;
 
 public class CreateDemo {
 
@@ -20,35 +21,30 @@ public class CreateDemo {
 				.addAnnotatedClass(Instructor.class)
 				.addAnnotatedClass(InstructorDetail.class)
 				.addAnnotatedClass(Course.class)
+				.addAnnotatedClass(Review.class)
 				.buildSessionFactory();
 		
 		// create session
 		Session session = sessionFactory.getCurrentSession();
 		
 		try {
+			
 			// start a transaction
 			session.beginTransaction();
 			
-			// Option(2): using (HQL) Hibernate Query Language
-			int theId = 5;
-			Query<Instructor> query = session.createQuery("select i from Instructor i "
-										+"JOIN FETCH i.courses " 
-										+"where i.id=:theInstructorId",
-								Instructor.class);
-			// set parameter on query
-			query.setParameter("theInstructorId", theId);
+			Course tempCourse = new Course("CSS");
+			Review tempReview1 = new Review("Good");
+			Review tempReview2 = new Review("Very Good");
 			
-			// execute query
-			Instructor tempInstructor = query.getSingleResult();
+			tempCourse.add(tempReview1);
+			tempCourse.add(tempReview2);
 			
-			System.out.println("instructor: "+tempInstructor.getCourses());
+			System.out.println("Saving the Course "+tempCourse.toString());
+			System.out.println("Reviews: "+tempCourse.getReviews().toString());
+			session.save(tempCourse);
 			
 			// commit transaction
 			session.getTransaction().commit();
-			
-			// close the session 
-			session.close();
-			System.out.println("instructor: "+tempInstructor.getCourses());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
