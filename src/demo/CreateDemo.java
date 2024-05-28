@@ -31,6 +31,9 @@ public class CreateDemo {
 			// get a course 
 			Instructor tempInstructor = session.get(Instructor.class, 5);
 			
+			// Option(1): call getter method while session is opened to solve error
+			System.out.println(tempInstructor.getCourses());
+			
 			// commit transaction
 			session.getTransaction().commit();
 			
