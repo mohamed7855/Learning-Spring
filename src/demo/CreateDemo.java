@@ -36,11 +36,11 @@ public class CreateDemo {
 			
 			
 			
-			Course tempCourse = session.get(Course.class, 17);
+			Student tempStudent = session.get(Student.class, 2);
 			
-			System.out.println("Deleting Course: "+tempCourse);
+			System.out.println("Deleting Student: "+tempStudent);
 			
-			session.delete(tempCourse);
+			session.delete(tempStudent);
 			
 			// commit transaction
 			session.getTransaction().commit();
